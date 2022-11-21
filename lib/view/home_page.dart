@@ -11,19 +11,9 @@ class HomePage extends StatelessWidget {
     return BlocBuilder<RandomColorBloc, RandomColorState>(
       builder: ((context, state) {
         if (state is GenerateColorState) {
-          return BackgroundColorWidget(
-            a: state.a,
-            r: state.r,
-            g: state.g,
-            b: state.b,
-          );
+          return BackgroundColorWidget(color: state.color);
         } else {
-          return const BackgroundColorWidget(
-            a: 255,
-            r: 255,
-            g: 255,
-            b: 255,
-          );
+          return const BackgroundColorWidget();
         }
       }),
     );

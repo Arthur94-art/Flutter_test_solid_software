@@ -1,15 +1,20 @@
 import 'dart:math';
 
-class GeneratedColorRepo {
-  Random random = Random();
-  late int r;
-  late int g;
-  late int b;
-  late int a;
-  Future<void> getGeneratedNumber() async {
-    r = random.nextInt(256);
-    g = random.nextInt(256);
-    b = random.nextInt(256);
-    a = random.nextInt(256);
+import 'package:test_solid_software/data/models/argb_model.dart';
+
+abstract class ColorRepo {
+  Future<ARGBModel> getGeneratedNumber();
+}
+
+class GeneratedColorRepo extends ColorRepo {
+  @override
+  Future<ARGBModel> getGeneratedNumber() async {
+    Random random = Random();
+    return ARGBModel(
+      random.nextInt(256).toDouble(),
+      random.nextInt(256),
+      random.nextInt(256),
+      random.nextInt(256),
+    );
   }
 }
